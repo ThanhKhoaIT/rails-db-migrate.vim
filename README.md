@@ -1,5 +1,4 @@
 # Rails DB Migrate VIM Plugin
------
 
 ### Installation
 
@@ -33,4 +32,37 @@ This `g:rails_migrate_command` variable can be used to support any number of mig
 For example, to use Dispatch:
 ```vim
 let g:rails_migrate_command = "Dispatch bundle exec rake"
+```
+
+### Presentation
+#### 1. Run all migration files.
+
+Command line: `bundle exec rake db:migrate`
+
+```vim
+:RailsMigrate
+```
+
+#### 2. Run down migration for current file.
+
+Command line: `bundle exec rake db:migrate:down VERSION={version}`
+
+```vim
+:RailsMigrateDown
+```
+
+#### 3. Run up migration for current file.
+
+Command line: `bundle exec rake db:migrate:up VERSION={version}`
+
+```vim
+:RailsMigrateUp
+```
+
+#### 4. Run redo migration for current file.
+
+Command line: `bundle exec rake db:migrate:redo VERSION={version}`
+
+```vim
+:RailsMigrateRedo
 ```
