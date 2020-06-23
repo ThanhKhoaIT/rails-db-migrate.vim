@@ -6,6 +6,12 @@ command! RailsMigrateUp call RailsMigrateUpThisFile()
 command! RailsMigrateRedo call RailsMigrateRedoThisFile()
 command! RailsMigrate call RailsMigrate()
 
+let s:default_command = "!bundle exec rake"
+
+if !exists("g:rails_migrate_command")
+  let g:rails_migrate_command = s:default_command
+endif
+
 function! s:GetCurrentMigrateVerion()
   let l:filename = expand("%:t")
   let l:migrate_version=split(l:filename, '_')[0]
@@ -21,7 +27,7 @@ function! RailsMigrateUpThisFile()
     echo 'Current file is not migrate'
     return
   else
-    execute "!bundle exec rake db:migrate:up VERSION=" . s:GetCurrentMigrateVerion()
+    execute g:rails_migrate_command . " db:migrate:up VERSION=" . s:GetCurrentMigrateVerion()
   end
 endfunction
 
@@ -30,7 +36,7 @@ function! RailsMigrateDownThisFile()
     echo 'Current file is not migrate'
     return
   else
-    execute "!bundle exec rake db:migrate:down VERSION=" . s:GetCurrentMigrateVerion()
+    execute g:rails_migrate_command . " db:migrate:down VERSION=" . s:GetCurrentMigrateVerion()
   end
 endfunction
 
@@ -39,10 +45,10 @@ function! RailsMigrateRedoThisFile()
     echo 'Current file is not migrate'
     return
   else
-    execute "!bundle exec rake db:migrate:redo VERSION=" . s:GetCurrentMigrateVerion()
+    execute g:rails_migrate_command . " db:migrate:redo VERSION=" . s:GetCurrentMigrateVerion()
   end
 endfunction
 
 function! RailsMigrate()
-  execute "!bundle exec rake db:migrate"
+  execute g:rails_migrate_command . " db:migrate"
 endfunction
