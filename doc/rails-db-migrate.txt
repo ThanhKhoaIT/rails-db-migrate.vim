@@ -1,0 +1,39 @@
+*rails-db-migrate.vim.txt* run Rails DB Migrate from within vim
+
+INTRODUCTION                                    *rails-db-migrate.vim*
+
+A lightweight Rails DB Migrate runner for Vim, NeoVim and MacVim.
+
+Repo:    https://github.com/ThanhKhoaIT/rails-db-migrate.vim
+
+FUNCTIONS                                       *rails-db-migrate-functions*
+
+rails-db-migrate.vim provides four functions for executing your migration:
+
+
+                                                *all-migrations* *RailsMigrate*
+:RailsMigrate               Run all migration files in the project.
+                        Equivalent to running
+
+                        bundle exec rake db:migrate
+
+
+
+                                                *down-migration* *RailsMigrateDown*
+:RailsMigrateDown           Run down the migration for current file.
+                        Equivalent to running
+
+                        bundle exec rake db:migrate:down VERSION={version}
+
+
+                                                *up-migration* *RailsMigrateUp*
+:RailsMigrateUp             Run up the migration for current file.
+                        Equivalent to running
+
+                        bundle exec rake db:migrate:up VERSION={version}
+
+                                                *redo-migration* *RailsMigrateRedo*
+:RailsMigrateRedo           Run redo the migration for current file.
+                        Equivalent to running
+
+                        bundle exec rake db:migrate:redo VERSION={version}

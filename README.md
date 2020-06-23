@@ -29,7 +29,7 @@ Example: (it is Default)
 let g:rails_migrate_command = "!bundle exec rake"
 ```
 
-This `g:rails_migrate_command` variable can be used to support any number of test runners or pre-loaders.
+This `g:rails_migrate_command` variable can be used to support any number of migration runners or pre-loaders.
 For example, to use Dispatch:
 ```vim
 let g:rails_migrate_command = "Dispatch bundle exec rake"
